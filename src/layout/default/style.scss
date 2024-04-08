@@ -1,0 +1,31 @@
+@use '../../lib/services.scss' as s;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(2);
+  &__caption {
+    font-size: s.space(5);
+    font-weight: bold;
+    border-bottom: 1px solid s.color('light');
+    padding-bottom: s.space(4);
+  }
+  &__label {
+    display: block;
+    margin-top: s.space(2);
+  }
+  &__input {
+    border: 1px solid #000;
+    padding: s.space(2);
+    margin-left: s.space(2);
+  }
+  &__button {
+    display: block;
+    margin: 0 auto;
+    background-color: #01f;
+    color: #fff;
+    padding: s.space(2);
+  }
+  &__link {
+    padding: s.space(2);
+  }
+}

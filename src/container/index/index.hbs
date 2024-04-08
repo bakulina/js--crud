@@ -3,9 +3,91 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
  }}
 
-<div >
-  Hello world!
-</div>
+<main>
+  <section>
+    <form class='form' action='/user-create' method='post'>
+      <h1 class='form__caption'>Створити користувача</h1>
+      <label class='form__label'>Логін
+        <input
+          type='text'
+          name='login'
+          placeholder='Логін'
+          class='form__input'
+        />
+      </label>
+      <label class='form__label'>Email
+        <input
+          type='email'
+          name='email'
+          placeholder='Email'
+          class='form__input'
+        />
+      </label>
+      <label class='form__label'>Пароль
+        <input
+          type='password'
+          name='password'
+          placeholder='Пароль'
+          class='form__input'
+        />
+      </label>
+      <button class='form__button'>Створити</button>
+    </form>
+  </section>
+  <section>
+    <form class='form'>
+      <h1 class='form__caption'>Список користувачів</h1>
+      {{#with data.users}}
+        {{#if isEmpty}}
+          <div class='form-title'>Порожній</div>
+        {{else}}
+          <ul>
+            {{#each list}}
+              <li>{{login}}
+                |
+                {{email}}
+                |
+                {{id}}
+                | (<a
+                  href='/user-delete?id={{id}}'
+                >Видалити</a>)</li>
+            {{/each}}
+          </ul>
+        {{/if}}
+      {{/with}}
+    </form>
+  </section>
+  <section>
+    <form class='form' action='/user-update' method='post'>
+      <h1 class='form__caption'>Оновити еmail користувача</h1>
+      <label class='form__label'>ID
+        <input
+          type='text'
+          name='id'
+          placeholder='ID'
+          class='form__input'
+        />
+      </label>
+      <label class='form__label'>Новий еmail
+        <input
+          type='email'
+          name='email'
+          placeholder='Email'
+          class='form__input'
+        />
+      </label>
+      <label class='form__label'>Пароль
+        <input
+          type='password'
+          name='password'
+          placeholder='Пароль'
+          class='form__input'
+        />
+      </label>
+      <button class='form__button'>Оновити</button>
+    </form>
+  </section>
+</main>
 
 {{! 
     Цей код містить лише те, що буде виводитись в <body>

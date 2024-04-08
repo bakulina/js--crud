@@ -1,0 +1,22 @@
+/* Error: Module loop: this module is already being loaded.
+ *   ,--> src\lib\space.scss
+ * 1 | @use './space.scss';
+ *   | ^^^^^^^^^^^^^^^^^^^ new load
+ *   '
+ *   ,--> src\lib\services copy.scss
+ * 1 | @use './space.scss';
+ *   | =================== original load
+ *   '
+ *   src\lib\space.scss 1:1          @use
+ *   src\lib\services copy.scss 1:1  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Module loop: this module is already being loaded.\a   \250c \2500 \2500 > src\\lib\\space.scss\a 1 \2502  @use './space.scss';\d\a   \2502  ^^^^^^^^^^^^^^^^^^^ new load\a   \2575 \a   \250c \2500 \2500 > src\\lib\\services copy.scss\a 1 \2502  @use './space.scss';\d\a   \2502  \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501  original load\a   \2575 \a   src\\lib\\space.scss 1:1          @use\a   src\\lib\\services copy.scss 1:1  root stylesheet";
+}
