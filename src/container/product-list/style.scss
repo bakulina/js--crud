@@ -1,0 +1,57 @@
+@use '../../lib/services.scss' as s;
+
+.main__caption {
+  color: s.color('light-blue');
+  margin: s.space(2);
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(4);
+  padding: s.space(2);
+  width: s.space(40);
+  height: s.space(40);
+  margin-bottom: s.space(2);
+  background-color: s.color('white');
+  box-shadow: s.space(2) s.space(3) s.space(4)
+    s.color('black');
+  &__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: s.space(4);
+    width: s.space(3 * 48);
+    margin: s.space(2) s.space(2);
+  }
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+    margin: s.space(4) s.space(2);
+  }
+  & h3 {
+    color: s.color('light-blue');
+  }
+  & p {
+    margin-bottom: s.space(2);
+  }
+  & h5 {
+    color: s.color('gray');
+    margin-bottom: s.space(2);
+  }
+  & div {
+    display: flex;
+    justify-content: space-between;
+  }
+  & a {
+    color: s.color('blue');
+  }
+}
+button {
+  margin: 0 auto;
+  background-color: s.color('blue');
+}
+button a {
+  color: s.color('white');
+}

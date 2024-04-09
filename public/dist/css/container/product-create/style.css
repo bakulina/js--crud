@@ -1,0 +1,45 @@
+.main__caption {
+  margin: 8px;
+}
+
+.form {
+  display: grid;
+  gap: 8px;
+  box-shadow: 16px 24px 32px;
+  padding-bottom: 8px;
+}
+.form__caption {
+  margin: 8px;
+}
+.form__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.form__block {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.form__block div {
+  width: 45%;
+}
+.form__input {
+  border: 1px solid;
+  padding: 8px;
+  margin-right: 8px;
+  width: 100%;
+}
+.form__label {
+  display: block;
+  margin-top: 8px;
+}
+.form__button {
+  color: white;
+  padding: 8px;
+  justify-self: stretch;
+}
+.form__link {
+  padding: 8px;
+}
+
+/*# sourceMappingURL=style.css.map */
