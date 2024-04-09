@@ -1,0 +1,61 @@
+@use '../../lib/services.scss' as s;
+
+.main__caption {
+  color: s.color('light-blue');
+  margin: s.space(2);
+}
+.form {
+  display: grid;
+  gap: s.space(2);
+  background-color: s.color('light-gray');
+  box-shadow: s.space(4) s.space(6) s.space(8)
+    s.color('light-blue');
+  padding-bottom: s.space(2);
+  &__caption {
+    color: s.color('light-blue');
+    margin: s.space(2);
+  }
+  &__title {
+    font-size: s.space(5);
+    font-weight: bold;
+  }
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    margin-top: s.space(2);
+  }
+  &__block div {
+    width: 45%;
+  }
+  &__input {
+    border: 1px solid s.color('black');
+    padding: s.space(2);
+    margin-right: s.space(2);
+    width: 100%;
+  }
+  &__label {
+    display: block;
+    margin-top: s.space(2);
+  }
+  & div {
+    display: flex;
+    justify-content: space-between;
+  }
+  & a {
+    border: 1px solid s.color('black');
+    background-color: s.color('red');
+    color: s.color('white');
+    text-align: center;
+    padding: s.space(2);
+    width: 49%;
+  }
+  &__button-update {
+    background-color: s.color('green');
+    color: s.color('white');
+    padding: s.space(2);
+    width: 49%;
+  }
+  &__link {
+    padding: s.space(2);
+  }
+}
