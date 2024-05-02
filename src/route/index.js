@@ -48,25 +48,18 @@ class Product {
     return shuffLedlist.slice(0, 3)
   }
 }
-// ================================================================
 
 router.get('/purchase-index', function (req, res) {
+  const id = Number(req.query.id)
   res.render('purchase-index', {
     style: 'purchase-index',
     data: {
-      img: 'https://picsum.photos/200/300',
-      title:
-        "Комп'ютер Artline Gaming(X43v31) AMD Ryzen 5 3600",
-      description:
-        'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС',
-      category: [
-        { id: 1, text: 'готовий до відправки' },
-        { id: 2, text: 'топ продажів' },
-      ],
-      price: 27000,
+      list: Product.getList(),
     },
   })
 })
+// ================================================================
+
 Product.add(
   'https://picsum.photos/200/300',
   "Комп'ютер Artline Gaming(X43v31) AMD Ryzen 5 3600",
@@ -89,15 +82,6 @@ Product.add(
   20000,
 )
 // ================================================================
-router.get('/purchase-index', function (req, res) {
-  const id = Number(req.query.id)
-  res.render('purchase-index', {
-    style: 'purchase-index',
-    data: {
-      list: Product.getList(),
-    },
-  })
-})
 
 router.get('/purchase-product', function (req, res) {
   const id = Number(req.query.id)

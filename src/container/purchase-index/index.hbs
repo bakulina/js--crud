@@ -6,12 +6,12 @@
 <main class="main">
 {{> heading title='Товари'info='Компьютери та ноутбуки/ Компьютери.неттопи.ноутбукі'}}
 <div class="product-list">
-   
+  {{#each data.list}} 
 
 {{>purchase-product data=data}}
 {{>purchase-product data=data}}
 {{>purchase-product data=data}}
-
+{{/each}}
 </div>
 </main>
 
