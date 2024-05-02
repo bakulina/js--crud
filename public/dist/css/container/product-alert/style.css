@@ -1,0 +1,16 @@
+.form-alert {
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 16px 24px 32px;
+}
+.form-alert__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.form-alert__button {
+  padding: 8px;
+  justify-self: stretch;
+}
+
+/*# sourceMappingURL=style.css.map */

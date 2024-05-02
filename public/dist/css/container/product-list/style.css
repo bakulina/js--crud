@@ -1,0 +1,44 @@
+.main__caption {
+  margin: 8px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 8px;
+  box-shadow: 8px 12px 16px;
+}
+.card__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 576px;
+  margin: 8px 8px;
+}
+.card__block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px 8px;
+}
+.card p {
+  margin-bottom: 8px;
+}
+.card h5 {
+  margin-bottom: 8px;
+}
+.card div {
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=style.css.map */

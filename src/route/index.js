@@ -5,6 +5,7 @@ const router = express.Router()
 
 // ================================================================
 
+
 class Product {
   static #list = []
   static #count = 0
@@ -105,7 +106,40 @@ router.post('/purchase-create', function (req, res) {
       list: Product.getRandomList(id),
       product: Product.getById(id),
     },
+router.get('/product-create', function (req, res) {
+  res.render('product-create', {
+    style: 'product-create',
+  })
+})
+// ================================================================
+router.post('/product-create', function (req, res) {
+  const { name, price, description } = req.body
+  const product = new Product(name, price, description)
+  Product.addProduct(product)
+  res.render('product-alert', {
+    style: 'product-alert',
+    info: 'Товар був успішно створений',
+  })
+})
+// ================================================================
+router.get('/product-delete', function (req, res) {
+  const { id } = req.query
+  Product.deleteProduct(Number(id))
+  res.render('product-alert', {
+    style: 'product-alert',
+    info: 'Товар був успішно видалений',
+  })
+})
+// ================================================================
+router.post('/product-edit', function (req, res) {
+  const { name, price, description, id } = req.body
+  Product.updateProduct(Number(id), { price })
+  res.render('product-alert', {
+    style: 'product-alert',
+    info: 'Товар був успішно оновлений',
+
   })
 })
 // Підключаємо роутер до бек-енду
 module.exports = router
+//===================================

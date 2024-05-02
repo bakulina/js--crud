@@ -1,0 +1,27 @@
+<main>
+  <section>
+    <h1 class='main__caption'>Список товарів</h1>
+    <div class='card__block'>
+      {{#with data.products}}
+        <div class='card__container'>
+          {{#each list}}
+            <div class='card'>
+              <h3>{{name}}</h3>
+              <p>{{description}}</p>
+              <h5>ID :{{id}}</h5>
+              <div>
+                <h4>{{price}}&#8372;</h4>
+                <a
+                  href='/product-edit?id={{id}}'
+                >Редагувати</a>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{/with}}
+    </div>
+    <button class='form__button'>
+      <a href='/product-create'>Створити</a>
+    </button>
+  </section>
+</main>
