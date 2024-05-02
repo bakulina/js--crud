@@ -13,22 +13,22 @@ class Product {
     this.img = img
     this.title = title
     this.description = description
-    this.price = price
     this.category = category
+    this.price = price
   }
   static add = (
     img,
     title,
     description,
-    price,
     category,
+    price,
   ) => {
     const newProduct = new Product(
       img,
       title,
       description,
-      price,
       category,
+      price,
     )
     this.#list.push(newProduct)
   }
@@ -78,7 +78,7 @@ Product.add(
   'https://picsum.photos/200/300',
   "Комп'ютер Artline Gaming(X43v31) AMD Ryzen 5 3600",
   'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС',
-  [{ id: 2, text: 'топ продажів' }],
+  [{ id: 3, text: 'топ продажів' }],
   20000,
 )
 // ================================================================
