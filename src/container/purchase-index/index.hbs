@@ -3,8 +3,16 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
  }}
 
-<main>
-  hello word
+<main class="main">
+{{> heading title='Товари'info='Компьютери та ноутбуки/ Компьютери.неттопи.ноутбукі'}}
+<div class="product-list">
+   
+
+{{>purchase-product data=data}}
+{{>purchase-product data=data}}
+{{>purchase-product data=data}}
+
+</div>
 </main>
 
 {{! 

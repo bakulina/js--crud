@@ -1,0 +1,16 @@
+@use '../../lib/service.scss' as s;
+
+.heading{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+}
+.heading_title{
+   font-size: 24px;
+   color: black; 
+}
+.headinginfo{
+    font-size: 16px;
+    color: black;
+}
