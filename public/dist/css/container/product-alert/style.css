@@ -1,16 +1,17 @@
-.form-alert {
-  vertical-align: middle;
-  display: flex;
-  justify-content: space-around;
-  box-shadow: 16px 24px 32px;
-}
-.form-alert__title {
-  font-size: 20px;
-  font-weight: bold;
-}
-.form-alert__button {
-  padding: 8px;
-  justify-self: stretch;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @use '../../lib/services.scss' as s;
+ *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   src\container\product-alert\style.scss 1:1  root stylesheet */
 
-/*# sourceMappingURL=style.css.map */
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use '../../lib/services.scss' as s;\d\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   src\\container\\product-alert\\style.scss 1:1  root stylesheet";
+}

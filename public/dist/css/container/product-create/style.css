@@ -1,45 +1,17 @@
-.main__caption {
-  margin: 8px;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @use '../../lib/services.scss' as s;
+ *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   src\container\product-create\style.scss 1:1  root stylesheet */
 
-.form {
-  display: grid;
-  gap: 8px;
-  box-shadow: 16px 24px 32px;
-  padding-bottom: 8px;
-}
-.form__caption {
-  margin: 8px;
-}
-.form__title {
-  font-size: 20px;
-  font-weight: bold;
-}
-.form__block {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-}
-.form__block div {
-  width: 45%;
-}
-.form__input {
-  border: 1px solid;
-  padding: 8px;
-  margin-right: 8px;
-  width: 100%;
-}
-.form__label {
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
   display: block;
-  margin-top: 8px;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use '../../lib/services.scss' as s;\d\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   src\\container\\product-create\\style.scss 1:1  root stylesheet";
 }
-.form__button {
-  color: white;
-  padding: 8px;
-  justify-self: stretch;
-}
-.form__link {
-  padding: 8px;
-}
-
-/*# sourceMappingURL=style.css.map */

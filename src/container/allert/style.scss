@@ -1,0 +1,40 @@
+@use '../../lib/service.scss' as s;
+@use '../../component/divider/style.scss'as divider;
+@use '../../component/button/style.scss'as button;
+@use '../../component/field/style.scss'as field;
+@use '../../component/heading/style.scss'as heading;
+
+.card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px black;
+    background-color: #ffff;
+&_header{
+   flex-grow: 1; 
+}
+&_title{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+&_subtitle{
+    font-size: 18px;
+    margin-top: 8px;
+    color:#6666;
+
+}
+&_button{
+    background-color: blue;
+    color: #ffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+
+
+
+}
+}
