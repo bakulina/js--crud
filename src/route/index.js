@@ -212,6 +212,9 @@ router.post('/purchase-create', function (req, res) {
     },
   })
 })
+// ================================================================
+
+// Підключаємо роутер до бек-енду
 router.post('/purchase-submit', function (req, res) {
   const id = Number(req.query.id)
   let {
