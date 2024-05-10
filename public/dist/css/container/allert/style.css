@@ -43,7 +43,7 @@
 
 .heading_title {
   font-size: 24px;
-  color: black;
+  color: blue;
 }
 
 .headinginfo {
@@ -61,7 +61,7 @@
   background-color: white;
 }
 .card_header {
-  flex-grow: 1;
+  flex-grow: 1fr;
 }
 .card_title {
   font-size: 24px;

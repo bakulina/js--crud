@@ -1,0 +1,36 @@
+@use '../../lib/service.scss' as s;
+
+@use '../../component/heading/style.scss' as heading;
+@use '../../component/divider/style.scss' as divider;
+@use '../../component/field/style.scss'as field;
+@use '../../component/button/style.scss' as button;
+@use '../../component/purchase-product/style.scss'as purchaseProduct;
+.card{
+    color: blue;
+}
+.orders-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .orders-table th,.orders-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .orders-table th {
+    background-color: #f0f0f0;
+  }
+  
+  .orders-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  .button{
+    padding:10px 20px;
+    gap: 20px;
+  }
+  
+  
+  
+  
