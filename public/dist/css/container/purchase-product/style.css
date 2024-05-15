@@ -6,7 +6,7 @@
 
 .heading_title {
   font-size: 24px;
-  color: black;
+  color: blue;
 }
 
 .headinginfo {
@@ -75,6 +75,7 @@
   flex-direction: column;
   gap: 4px;
   width: 100%;
+  padding: 20px;
 }
 
 .field_label {
@@ -84,6 +85,11 @@
 .field_input {
   border: 1px solid black;
   padding: 8px;
+}
+
+.field--disabled {
+  position: absolute;
+  display: none;
 }
 
 .product-info_divider {

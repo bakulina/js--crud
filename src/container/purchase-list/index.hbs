@@ -1,0 +1,38 @@
+
+<div class="card">{{> heading title='Моі про замовлення'}}</div>
+    {{#with data.purchases}}
+      {{#each list}}
+      <a href="/purchase-info?id={{id}}">
+<table class="orders-table">
+  <thead>
+    <tr>
+      <th>ID:{{id}}</th>
+      <th>Товари</th>
+      <th>Сума замовлення</th>
+      <th>Нараховані бонуси</th>
+    </tr>
+</a>
+  </thead>
+  <tbody>
+    <tr>
+     
+      <td>{{id}}</td>
+      <td>{{product.title}}</td>
+      <td>{{totalPrice}}</td>
+      <td>{{bonus}}</td>
+    </tr>
+    
+   
+    
+  </tbody>
+</table>
+      {{/each}}
+    {{/with}}
+         
+
+ 
+
+{{! 
+    Цей код містить лише те, що буде виводитись в <body>
+    Адже наш layout/default.hbs має вже структуру HTML
+}}

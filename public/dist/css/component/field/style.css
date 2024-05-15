@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 4px;
   width: 100%;
+  padding: 20px;
 }
 
 .field_label {
@@ -12,6 +13,11 @@
 .field_input {
   border: 1px solid black;
   padding: 8px;
+}
+
+.field--disabled {
+  position: absolute;
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

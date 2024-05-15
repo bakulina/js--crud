@@ -1,0 +1,26 @@
+@use '../../lib/service.scss' as s;
+
+@use '../../component/heading/style.scss' as heading;
+@use '../../component/divider/style.scss' as divider;
+@use '../../component/field/style.scss'as field;
+@use '../../component/button/style.scss' as button;
+@use '../../component/purchase-product/style.scss'as purchaseProduct;
+.total-card{
+
+  display: grid;
+  width:952px;
+height: 648px;
+font-size: 20px;
+gap: 20px;
+padding: 40px;
+  background-color: s.color('light-gray'); 
+   
+}
+.button{
+  gap: 40px;
+}
+
+  
+  
+  
+  

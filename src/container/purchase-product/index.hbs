@@ -17,8 +17,8 @@
     <span class="product-info_category product-info_categoty--{{id}}">{{text}}</span>
     {{/each}}
      {{> divider}}
-     {{> field label="Кількість"type="number"name="amout"value="1"}}
-     <button class="product-info_button">Купити зараз:{{price}}грн</button>
+     {{> field label="Кількість"type="number"name="amount"value="1"}}
+     {{>button text='Купити зараз'price=price}}
   </div>
   </form>
   {{/with}}

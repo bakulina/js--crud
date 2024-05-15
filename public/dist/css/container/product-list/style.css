@@ -1,44 +1,17 @@
-.main__caption {
-  margin: 8px;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @use '../../lib/services.scss' as s;
+ *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   src\container\product-list\style.scss 1:1  root stylesheet */
 
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 8px;
-  width: 160px;
-  height: 160px;
-  margin-bottom: 8px;
-  box-shadow: 8px 12px 16px;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use '../../lib/services.scss' as s;\d\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   src\\container\\product-list\\style.scss 1:1  root stylesheet";
 }
-.card__container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  width: 576px;
-  margin: 8px 8px;
-}
-.card__block {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 16px 8px;
-}
-.card p {
-  margin-bottom: 8px;
-}
-.card h5 {
-  margin-bottom: 8px;
-}
-.card div {
-  display: flex;
-  justify-content: space-between;
-}
-button {
-  margin: 0 auto;
-}
-
-/*# sourceMappingURL=style.css.map */

@@ -5,34 +5,30 @@ const router = express.Router()
 
 // ================================================================
 
-
 class Product {
   static #list = []
   static #count = 0
-  constructor(img, title, description, price, category) {
+  constructor(
+    img,
+    title,
+    description,
+    category,
+    price,
+    amount = 0,
+  ) {
     this.id = ++Product.#count
     this.img = img
     this.title = title
     this.description = description
-    this.price = price
     this.category = category
+    this.price = price
+    this.amount = amount
   }
-  static add = (
-    img,
-    title,
-    description,
-    price,
-    category,
-  ) => {
-    const newProduct = new Product(
-      img,
-      title,
-      description,
-      price,
-      category,
-    )
+  static add = (...data) => {
+    const newProduct = new Product(...data)
     this.#list.push(newProduct)
   }
+
   static getList = () => {
     return this.#list
   }
@@ -49,203 +45,13 @@ class Product {
     return shuffLedlist.slice(0, 3)
   }
 }
-// ================================================================
-
-router.get('/purchase-index', function (req, res) {
-  res.render('purchase-index', {
-    style: 'purchase-index',
-    data: {
-      img: 'https://picsum.photos/200/300',
-      title:
-        "Комп'ютер Artline Gaming(X43v31) AMD Ryzen 5 3600",
-      description:
-        'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС',
-      category: [
-        { id: 1, text: 'готовий до відправки' },
-        { id: 2, text: 'топ продажів' },
-      ],
-      price: 27000,
-============================================================
-// class User {
-//   static #userList = []
-//   constructor(login, email, password) {
-//     this.login = login
-//     this.email = email
-//     this.password = password
-//     this.id = new Date().getTime()
-//   }
-//   static addUser = (user) => {
-//     this.#userList.push(user)
-//   }
-//   static getUserList = () => this.#userList
-
-//   static getUserById = (id) =>
-//     this.#userList.find((element) => element.id === id)
-
-//   static deleteUser = (id) => {
-//     const index = this.#userList.findIndex(
-//       (value) => value.id === id,
-//     )
-//     this.#userList.splice(index, 1)
-//   }
-//   static updateUser = (id, data) => {
-//     const user = this.getUserById(id)
-//     const { email } = data
-
-//     if (user) {
-//       if (email) {
-//         user.email = email
-//       }
-
-//       return true
-//     } else {
-//       return false
-//     }
-//   }
-// }
-// // ================================================================
-
-// router.get('/', function (req, res) {
-//   const list = User.getUserList()
-//   res.render('index', {
-//     style: 'index',
-//     data: {
-//       users: {
-//         list,
-//         isEmpty: list.length === 0,
-//       },
-//     },
-//   })
-// })
-// // ================================================================
-// router.post('/user-create', function (req, res) {
-//   const { login, email, password } = req.body
-//   const user = new User(login, email, password)
-//   User.addUser(user)
-//   res.render('user-create', {
-//     style: 'user-create',
-//   })
-// })
-// // ================================================================
-// router.get('/user-delete', function (req, res) {
-//   const { id } = req.query
-//   User.deleteUser(id)
-//   res.render('user-delete', {
-//     style: 'user-delete',
-//   })
-// })
-// // ================================================================
-// router.post('/user-update', function (req, res) {
-//   const { email, password, id } = req.body
-
-//   User.updateUser(Number(id), { email })
-
-//   res.render('user-update', {
-//     style: 'user-update',
-//   })
-// })
-//====================================
-
-// ================================================================
-class Product {
-  static #productList = []
-  constructor(name, price, description) {
-    let num = Math.trunc(Math.random() * 10000000000)
-    this.name = name
-    this.price = price
-    this.description = description
-    if (num.length !== 9) {
-      num = Math.trunc(Math.random() * 10000000000)
-      this.id = num
-    } else {
-      this.id = num
-    }
-    this.createDate = new Date().toISOString()
-  }
-  static addProduct = (product) =>
-    this.#productList.push(product)
-
-  static getProductList = () => this.#productList
-
-  static getProductById = (id) =>
-    this.#productList.find((element) => element.id === id)
-
-  static deleteProduct = (id) => {
-    const index = this.#productList.findIndex(
-      (value) => value.id === id,
-    )
-    this.#productList.splice(index, 1)
-  }
-  static updateProduct = (id, data) => {
-    const product = this.getProductById(id)
-    const { price } = data
-
-    if (product) {
-      if (price) {
-        product.price = price
-      }
-
-      return true
-    } else {
-      return false
-    }
-  }
-}
-// ================================================================
-router.get('/', function (req, res) {
-  res.render('index', {
-    style: 'index',
-  })
-})
-// ================================================================
-router.get('/product-edit', function (req, res) {
-  const { id } = req.query
-
-  const product = Product.getProductById(Number(id))
-
-  console.log(product)
-
-  if (product) {
-    // ↙️ cюди вводимо назву файлу з сontainer
-    return res.render('product-edit', {
-      // вказуємо назву папки контейнера, в якій знаходяться наші стилі
-      style: 'product-edit',
-
-      data: {
-        name: product.name,
-        price: product.price,
-        id: product.id,
-        description: product.description,
-      },
-    })
-  } else {
-    return res.render('product-alert', {
-      // вказуємо назву папки контейнера, в якій знаходяться наші стилі
-      style: 'product-alert',
-      info: 'Продукту за таким ID не знайдено',
-    })
-  }
-})
-// ================================================================
-router.get('/product-list', function (req, res) {
-  const list = Product.getProductList()
-  res.render('product-list', {
-    style: 'product-list',
-    data: {
-      products: {
-        list,
-        isEmpty: list.length === 0,
-      },
-
-    },
-  })
-})
 Product.add(
   'https://picsum.photos/200/300',
   "Комп'ютер Artline Gaming(X43v31) AMD Ryzen 5 3600",
   'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС',
   [{ id: 2, text: 'топ продажів' }],
   20000,
+  10,
 )
 Product.add(
   'https://picsum.photos/200/300',
@@ -253,17 +59,108 @@ Product.add(
   'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС',
   [{ id: 1, text: 'готовий до відправки' }],
   21000,
+  10,
 )
 Product.add(
   'https://picsum.photos/200/300',
   "Комп'ютер Artline Gaming(X43v31) AMD Ryzen 5 3600",
   'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 480 ГБ / nVidia GeForce RTX 3050, 8 ГБ / без ОД / LAN / без ОС',
-  [{ id: 2, text: 'топ продажів' }],
+  [{ id: 3, text: 'топ продажів' }],
   20000,
+  10,
 )
-// ================================================================
+class Purchase {
+  static DELIVERY_PRICE = 150
+  static #BONUS_FACTOR = 0.1
+  static #count = 0
+  static #list = []
+  static #bonusAccount = new Map()
+  static getBonusBalance = (email) => {
+    return Purchase.#bonusAccount.get(email) || 0
+  }
+  static calcBonusAmount = (value) => {
+    return value * Purchase.#BONUS_FACTOR
+  }
+  static updateBonusBalance = (
+    email,
+    price,
+    bonusUse = 0,
+  ) => {
+    const amount = this.calcBonusAmount(price)
+    const currentBalance = Purchase.getBonusBalance(email)
+    const updateBalance = currentBalance + amount - bonusUse
 
-router.get('/purchase-index', function (req, res) {
+    Purchase.#bonusAccount.set(email, updateBalance)
+    console.log(email, updateBalance)
+    return amount
+  }
+
+  constructor(data, product) {
+    this.id = ++Purchase.#count
+    this.firstname = data.firstname
+    this.lastname = data.lastname
+    this.phone = data.phone
+    this.email = data.email
+    this.comment = data.comment || null
+    this.bonus = data.bonus || 0
+    this.promocode = data.promocode || null
+    this.totalPrice = data.totalPrice
+    this.productPrice = data.productPrice
+    this.deliveryPrice = data.deliveryPrice
+    this.amount = data.amount
+    this.product = product
+  }
+
+  static add = (...arg) => {
+    const newPurchase = new Purchase(...arg)
+    this.#list.push(newPurchase)
+    return newPurchase
+  }
+  static getList = () => {
+    return Purchase.#list.reverse()
+  }
+  static getById = (id) => {
+    return Purchase.#list.find((item) => item.id === id)
+  }
+  static updateById = (id, data) => {
+    const purchase = Purchase.getById(id)
+
+    if (purchase) {
+      if (data.firstname)
+        purchase.firstname = data.firstname
+      if (data.lastname) purchase.lastname = data.lastname
+      if (data.phone) purchase.phone = data.phone
+      if (data.email) purchase.email = data.email
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
+class Promocode {
+  static #list = []
+  constructor(name, factor) {
+    this.name = name
+    this.factor = factor
+  }
+  static add = (name, factor) => {
+    const newPromoCode = new Promocode(name, factor)
+    Promocode.#list.push(newPromoCode)
+    return newPromoCode
+  }
+  static getByName = (name) => {
+    return this.#list.find((promo) => promo.name === name)
+  }
+  static calc = (promo, price) => {
+    return price * promo.factor
+  }
+}
+Promocode.add('SUMMER2023', 0.9)
+Promocode.add('DISCOUNT60', 0.5)
+Promocode.add('SALE', 0.75)
+
+router.get('/', function (req, res) {
   const id = Number(req.query.id)
   res.render('purchase-index', {
     style: 'purchase-index',
@@ -272,6 +169,9 @@ router.get('/purchase-index', function (req, res) {
     },
   })
 })
+// ================================================================
+
+// ================================================================
 
 router.get('/purchase-product', function (req, res) {
   const id = Number(req.query.id)
@@ -284,51 +184,282 @@ router.get('/purchase-product', function (req, res) {
     },
   })
 })
+
 //==========================
 router.post('/purchase-create', function (req, res) {
   const id = Number(req.query.id)
-  const amout = Number(req.body.amout)
-  console.log(id, amout)
-  res.render('purchase-product', {
-    style: 'purchase-product',
-    data: {
-      list: Product.getRandomList(id),
-      product: Product.getById(id),
-    },
-router.get('/product-create', function (req, res) {
-  res.render('product-create', {
-    style: 'product-create',
-  })
-})
-// ================================================================
-router.post('/product-create', function (req, res) {
-  const { name, price, description } = req.body
-  const product = new Product(name, price, description)
-  Product.addProduct(product)
-  res.render('product-alert', {
-    style: 'product-alert',
-    info: 'Товар був успішно створений',
-  })
-})
-// ================================================================
-router.get('/product-delete', function (req, res) {
-  const { id } = req.query
-  Product.deleteProduct(Number(id))
-  res.render('product-alert', {
-    style: 'product-alert',
-    info: 'Товар був успішно видалений',
-  })
-})
-// ================================================================
-router.post('/product-edit', function (req, res) {
-  const { name, price, description, id } = req.body
-  Product.updateProduct(Number(id), { price })
-  res.render('product-alert', {
-    style: 'product-alert',
-    info: 'Товар був успішно оновлений',
+  const amount = Number(req.body.amount)
+  if (amount < 1) {
+    return res.render('allert', {
+      style: 'allert',
+      data: {
+        message: 'Помилка',
+        info: 'Некоректна кількість товару',
+        link: `/purchase-product?id=${id}`,
+      },
+    })
+  }
+  const product = Product.getById(id)
 
+  if (product.amount < 1) {
+    return res.render('allert', {
+      style: 'allert',
+      data: {
+        message: 'Помилка',
+        info: 'Такого кількості товару нема в налічіі',
+        link: `/purchase-product?=${id}`,
+      },
+    })
+  }
+  console.log(product, amount)
+
+  const productPrice = product.price * amount
+  const totalPrice = productPrice + Purchase.DELIVERY_PRICE
+  const bonus = Purchase.calcBonusAmount(totalPrice)
+
+  res.render('purchase-create', {
+    style: 'purchase-create',
+    data: {
+      id: product.id,
+      cart: [
+        {
+          text: `${product.title} (${amount} шт)`,
+          price: product.price,
+        },
+        {
+          text: 'Вартість доставки',
+          price: Purchase.DELIVERY_PRICE,
+        },
+      ],
+      totalPrice,
+      productPrice,
+      deliveryPrice: Purchase.DELIVERY_PRICE,
+      amount,
+      bonus,
+    },
   })
 })
+//====================================================
+
+router.get('/purchase-list', function (req, res) {
+  const id = Number(req.query.id)
+  const list = Purchase.getList()
+
+  res.render('purchase-list', {
+    style: 'purchase-list',
+    title: 'Моі замовлення',
+    data: {
+      purchases: {
+        list,
+      },
+    },
+  })
+})
+router.get('/purchase-info', function (req, res) {
+  const id = Number(req.query.id)
+  const purchase = Purchase.getById(id)
+  const bonus = Purchase.calcBonusAmount(
+    Purchase.TotalPrice,
+  )
+  res.render('purchase-info', {
+    style: 'purchase-info',
+    data: {
+      id: purchase.id,
+      firstname: purchase.firstname,
+      lastname: purchase.lastname,
+      phone: purchase.phone,
+      email: purchase.email,
+      delivery: purchase.delivery,
+      product: purchase.product.title,
+      productPrice: purchase.productPrice,
+      deliveryPrice: purchase.deliveryPrice,
+      totalPrice: purchase.totalPrice,
+      bonus: bonus,
+    },
+  })
+})
+router.get('/purchase-edite', function (req, res) {
+  const id = Number(req.query.id)
+  const purchase = Purchase.getById(id)
+  if (!purchase) {
+    res.render('allert', {
+      style: 'allert',
+      isError: true,
+      title: 'Помилка',
+      info: 'Замовлення з таким ID не найдено',
+    })
+  } else {
+  }
+  res.render('purchase-edite', {
+    style: 'purchase-edite',
+    data: {
+      id: purchase.id,
+      firstname: purchase.firstname,
+      lastname: purchase.lastname,
+      phone: purchase.phone,
+      email: purchase.email,
+      delivery: purchase.delivery,
+    },
+  })
+})
+
+router.post('/purchase-edite', function (req, res) {
+  const id = Number(req.query.id)
+  let { firstname, lastname, phone, email, delivery } =
+    req.body
+  const purchase = Purchase.getById(id)
+  console.log(purchase)
+  if (purchase) {
+    const newPurchase = Purchase.updateById(id, {
+      firstname,
+      lastname,
+      phone,
+      email,
+      delivery,
+    })
+    console.log(newPurchase)
+    if (newPurchase) {
+      res.render('allert', {
+        style: 'allert',
+        data: {
+          link: '/purchase-list',
+          title: 'Успішне виконаня діі',
+          info: 'товар успішно оновлен',
+        },
+      })
+    }
+  } else {
+    res.render('allert', {
+      style: 'allert',
+      data: {
+        link: '/purchase-list',
+        title: 'помилка',
+        info: 'не вдалося оновити товар',
+      },
+    })
+  }
+})
+
+// ===============================================================
+
 // Підключаємо роутер до бек-енду
+router.post('/purchase-submit', function (req, res) {
+  const id = Number(req.query.id)
+  let {
+    totalPrice,
+    productPrice,
+    deliveryPrice,
+    amount,
+
+    firstname,
+    lastname,
+    email,
+    phone,
+    promocode,
+    bonus,
+  } = req.body
+
+  const product = Product.getById(id)
+  if (!product) {
+    return res.render('allert', {
+      style: 'allert',
+      data: {
+        message: 'Помилка',
+        info: 'Товар не знайдено',
+        link: '/purchase-list',
+      },
+    })
+  }
+
+  if (product.amount < amount) {
+    return res.render('allert', {
+      style: 'allert',
+      data: {
+        message: 'Помилка',
+        info: 'Товару нема в потрібній кількості',
+        link: '/purchase-list',
+      },
+    })
+  }
+  totalPrice = Number(totalPrice)
+  productPrice = Number(productPrice)
+  deliveryPrice = Number(deliveryPrice)
+  amount = Number(amount)
+  bonus = Number(bonus)
+  if (
+    isNaN(totalPrice) ||
+    isNaN(productPrice) ||
+    isNaN(deliveryPrice) ||
+    isNaN(amount) ||
+    isNaN(bonus)
+  ) {
+    return res.render('allert', {
+      style: 'allert',
+      data: {
+        message: 'Помилка',
+        info: 'Некоректні дані',
+        link: '/purchase-list',
+      },
+    })
+  }
+  if ((!firstname, !lastname, !email, !phone)) {
+    return res.render('allert', {
+      style: 'allert',
+      data: {
+        message: 'Заповніть обов.язкові поля',
+        info: 'Некоректні дані',
+        link: '/purchase-list',
+      },
+    })
+  }
+  if (bonus || bonus > 0) {
+    const bonusAmount = Purchase.getBonusBalance(email)
+    console.log(bonusAmount)
+    if (bonus > bonusAmount) {
+      bonus = bonusAmount
+    }
+    Purchase.updateBonusBalance(email, totalPrice, bonus)
+    totalPrice -= bonus
+  } else {
+    Purchase.updateBonusBalance(email, totalPrice, 0)
+  }
+
+  if (promocode) {
+    promocode = Promocode.getByName(promocode)
+    if (promocode) {
+      totalPrice = Promocode.calc(promocode, totalPrice)
+    }
+  }
+  if (totalPrice < 0) {
+    totalPrice = 0
+  }
+  const purchase = Purchase.add(
+    {
+      totalPrice,
+      productPrice,
+      deliveryPrice,
+      amount,
+      bonus,
+      firstname,
+      lastname,
+      email,
+      phone,
+      promocode,
+    },
+    product,
+  )
+  console.log(purchase)
+
+  res.render('allert', {
+    style: 'allert',
+    data: {
+      message: 'успішно',
+      info: 'Замовлення створено',
+      link: '/purchase-list',
+    },
+  })
+})
+// ================================================================
+
 module.exports = router
 //===================================

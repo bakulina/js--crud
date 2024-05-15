@@ -1,0 +1,27 @@
+
+<div class="card">{{> heading title=' Зміна данніх'}}</div>
+    
+    {{#with data}} 
+<form action="POST"action="/purchase-edite?id={{data.id}}" class="form"></form>
+  {{>field label="ID" name="id"}}
+  {{>field label="Ім'я" name="username"}}
+  {{>field label="Призвище" name="surname"}}
+  {{>field label="Телефон" name="phone"}}
+  {{>field label="Пошта" name="email"}}
+  <a href="/purchase-list?=id{{id}}" class="">
+  {{> button text="Зберегти зміни"}}
+  </a>
+    {{/with}}
+     
+
+
+   
+   
+         
+
+ 
+
+{{! 
+    Цей код містить лише те, що буде виводитись в <body>
+    Адже наш layout/default.hbs має вже структуру HTML
+}}
