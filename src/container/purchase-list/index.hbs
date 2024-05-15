@@ -1,5 +1,5 @@
 
-<div class="card">{{> heading title='Моі замовлення'}}</div>
+<div class="card">{{> heading title='Моі про замовлення'}}</div>
     {{#with data.purchases}}
       {{#each list}}
       <a href="/purchase-info?id={{id}}">
@@ -17,7 +17,7 @@
     <tr>
      
       <td>{{id}}</td>
-      <td>{{product}}</td>
+      <td>{{product.title}}</td>
       <td>{{totalPrice}}</td>
       <td>{{bonus}}</td>
     </tr>

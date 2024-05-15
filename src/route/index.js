@@ -137,6 +137,7 @@ class Purchase {
     }
   }
 }
+
 class Promocode {
   static #list = []
   constructor(name, factor) {
@@ -255,7 +256,7 @@ router.get('/purchase-list', function (req, res) {
   })
 })
 router.get('/purchase-info', function (req, res) {
-  const id = Number(req.query.res)
+  const id = Number(req.query.id)
   const purchase = Purchase.getById(id)
   const bonus = Purchase.calcBonusAmount(
     Purchase.TotalPrice,
@@ -277,7 +278,72 @@ router.get('/purchase-info', function (req, res) {
     },
   })
 })
-// ================================================================
+router.get('/purchase-edite', function (req, res) {
+  const id = Number(req.query.id)
+  const purchase = Purchase.getById(id)
+  if (!purchase) {
+    res.render('allert', {
+      style: 'allert',
+      isError: true,
+      title: 'Помилка',
+      info: 'Замовлення з таким ID не найдено',
+    })
+  } else {
+  }
+  res.render('purchase-edite', {
+    style: 'purchase-edite',
+    data: {
+      id: purchase.id,
+      firstname: purchase.firstname,
+      lastname: purchase.lastname,
+      phone: purchase.phone,
+      email: purchase.email,
+      delivery: purchase.delivery,
+    },
+  })
+})
+
+ router.post('/purchase-edite',function(req,res){
+  const id=Number(req.query.id)
+  let(firstname,lastname,phone,email,delivery)=req.body
+  const purchase=Purchase.getById(id)
+  console.log(purchase)
+  if(purchase){
+   const newPurchase =Purchase.updateById(id,{
+
+    firstname,lastname,phone,email,delivery,
+  })
+  console.log(newPurchase)
+  if(newPurchase){
+    res.render('allert',{
+      style:'allert',
+      data:{
+      link:"/purchase-list", 
+      title:'Успішне виконаня діі' ,
+      info:'товар успішно оновлен',
+      },
+    })
+    }
+  }else{
+    res.render('allert',{
+style:'allert',
+data:{
+  link:'/purchase-list',
+  title:'помилка',
+  info:'не вдалося оновити товар'
+}
+    })
+  }
+  })
+ 
+
+
+
+
+
+
+
+// ===============================================================
 
 // Підключаємо роутер до бек-енду
 router.post('/purchase-submit', function (req, res) {

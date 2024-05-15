@@ -1,0 +1,43 @@
+
+<div class="card">{{> heading title=' Інформація про змовлення'}}</div>
+    {{#with data}}
+      
+    <a href="/purchase-edite?id={{id}}"></a>
+      <div class="total-card">
+  <strong>ID:
+{{id}}
+</strong>
+<strong>Имя:
+{{firstname}}
+</strong>
+<strong>Фамилия:
+{{lastname}}
+</strong>
+<strong>Телефон:
+{{phone}}
+</strong>
+<strong>Почта:
+{{email}}
+</strong>
+<strong>Название товара:
+{{product}}
+</strong>
+<strong>Цена:
+{{totalPrice}}
+</strong>
+<strong>Цена доставки:
+{{deliveryPrice}}
+{{price}}
+</strong>
+</div>
+<a href="/purchase-edite?id={{id}}"class="button">Змінити дані</a>
+   
+    {{/with}}
+         
+
+ 
+
+{{! 
+    Цей код містить лише те, що буде виводитись в <body>
+    Адже наш layout/default.hbs має вже структуру HTML
+}}

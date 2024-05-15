@@ -24,6 +24,7 @@
   flex-direction: column;
   gap: 4px;
   width: 100%;
+  padding: 20px;
 }
 
 .field_label {
@@ -49,6 +50,7 @@
   font-size: 16px;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  justify-items: end;
 }
 
 .product-card {
